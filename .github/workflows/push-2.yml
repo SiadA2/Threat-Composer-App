@@ -1,0 +1,34 @@
+name: CoderCo Assignment 1
+
+on: [push]
+
+env:
+  AWS_REGION: eu-west-2                  
+  ECR_REPOSITORY: 174350032095.dkr.ecr.eu-west-2.amazonaws.com/siada2/ecs
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v1
+        with:
+         mask-password: true
+
+    
+      - name: build and push image
+        run: |
+          docker build -t siada2/ecs .
+          docker tag siada2/ecs:latest $ECR_REPOSITORY
+          docker push $ECR_REPOSITORY
