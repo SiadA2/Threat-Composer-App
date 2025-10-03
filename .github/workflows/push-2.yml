@@ -36,7 +36,6 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        aws ecr get-login-password --region eu-west-2 | docker login --username AWS --password-stdin $ECR_REPOSITORY
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ~/.vscode/Threat-Composer-App/app
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         
