@@ -9,9 +9,6 @@ env:
   ECR_REPOSITORY: 174350032095.dkr.ecr.eu-west-2.amazonaws.com/siada2/ecs  
   IMAGE_TAG: siada2/ecs:latest         
 
-permissions:
-  contents: read
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -30,6 +27,8 @@ jobs:
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
+      with:
+        mask-password: true
 
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
