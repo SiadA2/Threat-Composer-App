@@ -1,4 +1,4 @@
-name: CoderCo Assignment 1
+name: Push to ECR
 
 on: [push]
 
@@ -29,6 +29,7 @@ jobs:
     
       - name: build and push image
         run: |
+          cd app
           docker build -t siada2/ecs .
           docker tag siada2/ecs:latest $ECR_REPOSITORY
           docker push $ECR_REPOSITORY
