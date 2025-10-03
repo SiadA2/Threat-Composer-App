@@ -6,13 +6,10 @@ on:
 
 env:
   AWS_REGION: eu-west-2                  
-  ECR_REPOSITORY: siada2/ecs       
-
-permissions:
-  contents: read
+  ECR_REPOSITORY: 174350032095.dkr.ecr.eu-west-2.amazonaws.com/siada2/ecs       
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,23 +24,15 @@ jobs:
         aws-region: ${{ env.AWS_REGION }}
 
     - name: Login to Amazon ECR
-      id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
       with:
         mask-password: true
 
     - name: Build, tag, and push image to Amazon ECR
-      id: build-image
-      env:
-        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        IMAGE_TAG: ${{ github.sha }}
       run: |
-        # Build a docker container and
-        # push it to ECR so that it can
-        # be deployed to ECS.
         cd ~/.vscode/Threat-Composer-App/app
         docker build -t siada2/ecs .
-        docker tag siada2/ecs:latest 174350032095.dkr.ecr.eu-west-2.amazonaws.com/siada2/ecs:latest
-        docker push 174350032095.dkr.ecr.eu-west-2.amazonaws.com/siada2/ecs:latest
+        docker tag siada2/ecs:latest $ECR_REPOSITORY
+        docker push $ECR_REPOSITORY
 
 
