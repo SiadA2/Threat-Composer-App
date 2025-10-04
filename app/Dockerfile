@@ -8,7 +8,7 @@ COPY package.json .
 
 RUN yarn install
 
-#COPY . .
+COPY . .
 
 RUN DISABLE_ESLINT_PLUGIN=true yarn build
 
