@@ -37,6 +37,8 @@ jobs:
         IMAGE_TAG: ${{ github.sha }}
       run: |
         cd app
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        aws ecr get-login-password --region eu-west-2 | docker login --username AWS --password-stdin 174350032095.dkr.ecr.eu-west-2.amazonaws.com
+        docker build -t siada2/ecs .
+        docker tag siada2/ecs:latest 174350032095.dkr.ecr.eu-west-2.amazonaws.com/siada2/ecs:latest
+        docker push 174350032095.dkr.ecr.eu-west-2.amazonaws.com/siada2/ecs:latest
         
