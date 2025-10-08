@@ -1,4 +1,4 @@
-name: Push to Amazon ECR
+name: Push to AWS ECR
 
 on:
   push:
