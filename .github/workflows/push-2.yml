@@ -1,13 +1,11 @@
-name: Push to ECR
+name: Push to Amazon ECR
 
 on:
   push:
     branches: [ "main" ]
 
 env:
-  AWS_REGION: eu-west-2                  
-  ECR_REPOSITORY: 174350032095.dkr.ecr.eu-west-2.amazonaws.com/siada2/ecs  
-  IMAGE_TAG: siada2/ecs:latest         
+  AWS_REGION: eu-west-2                           
 
 jobs:
   deploy:
@@ -32,9 +30,6 @@ jobs:
 
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
-      env:
-        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        IMAGE_TAG: ${{ github.sha }}
       run: |
         cd app
         aws ecr get-login-password --region eu-west-2 | docker login --username AWS --password-stdin 174350032095.dkr.ecr.eu-west-2.amazonaws.com
