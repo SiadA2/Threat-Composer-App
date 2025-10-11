@@ -1,0 +1,6 @@
+name: Terraform Destroy
+on: [push]
+
+jobs:   
+  apply:
+    runs-on: ubuntu-24.04
