@@ -1,0 +1,29 @@
+name: Terraform Plan
+on: [push]
+
+env:
+  AWS_REGION: eu-west-2  
+
+jobs:
+  plan:
+    runs-on: ubuntu-24.03
+   
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # - name: Run Trivy vulnerability scanner
+      #   uses: aquasecurity/trivy-action@0.28.0
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+          
+      - name: terraform plan
+        uses: dflook/terraform-plan@v2
+        with:
+          path: Terraform 
+        if: success()
