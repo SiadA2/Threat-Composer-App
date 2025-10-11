@@ -1,4 +1,4 @@
-name: Terraform Plan
+name: Terraform plan
 on: [push]
 
 env:
