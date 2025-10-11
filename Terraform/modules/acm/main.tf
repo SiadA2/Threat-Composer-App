@@ -1,16 +1,3 @@
-# resource "aws_acm_certificate" "cert" {
-#   domain_name       = "tm.nginxsiad.com"
-#   validation_method = "DNS"
-
-#   tags = {
-#     Environment = "test"
-#   }
-
-#   lifecycle {
-#     create_before_destroy = true
-#   }
-# }
-
 resource "aws_acm_certificate" "application" {
   domain_name       = "tm.nginxsiad.com"
   validation_method = "DNS"
