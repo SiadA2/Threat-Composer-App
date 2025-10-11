@@ -1,8 +1,0 @@
-name: Terraform apply
-on: [push]
-
-jobs:   
-  apply:
-    runs-on: ubuntu-24.04
-
-        
