@@ -1,0 +1,25 @@
+name: Terraform apply
+
+on: 
+  push:
+  workflow_dispatch: 
+    inputs:
+        terraform-apply:
+            description: 'Terraform apply?'
+            required: true
+            type: string
+
+jobs:   
+  apply:
+    runs-on: ubuntu-24.04
+
+    steps:
+
+      - name: Terraform apply
+        uses: dflook/terraform-apply@v2
+        with:
+          path: Terraform
+          auto_approve: true
+
+
+        

@@ -12,8 +12,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.28.0
+      - name: Run checkov scan
+        uses: bridgecrewio/checkov-action@v12
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -21,9 +21,9 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
+        if: success()
           
       - name: terraform plan
         uses: dflook/terraform-plan@v2
         with:
           path: Terraform 
-        if: success()
