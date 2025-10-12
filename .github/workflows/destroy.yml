@@ -1,7 +1,7 @@
 name: Terraform Destroy
 on: 
-    push:
-        branches: [main]
+    # push:
+    #     branches: [main]
     workflow_dispatch: 
         inputs: 
             terraform-destroy: 
@@ -29,5 +29,5 @@ jobs:
     - name: terraform destroy
       uses: dflook/terraform-destroy@v2
       with:
-        path: my-terraform-config
+        path: Terraform
         workspace: ${{ github.head_ref }}
