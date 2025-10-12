@@ -1,8 +1,6 @@
 name: Terraform Plan
 
 on:
-  # push: 
-  #   branches: [main]
   workflow_dispatch: 
     inputs:
         terraform-plan:
@@ -22,8 +20,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # - name: Run checkov scan
-      #   uses: bridgecrewio/checkov-action@v12
+      - name: Run checkov scan
+        uses: bridgecrewio/checkov-action@v12
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
