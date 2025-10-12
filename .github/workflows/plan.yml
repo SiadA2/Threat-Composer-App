@@ -4,7 +4,7 @@ on:
   workflow_dispatch: 
     inputs:
         terraform-plan:
-            description: 'Terraform apply?'
+            description: 'Terraform plan?'
             required: true
             type: string
 
