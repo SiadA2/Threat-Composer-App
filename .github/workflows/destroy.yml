@@ -1,0 +1,33 @@
+name: Terraform Destroy
+on: 
+    push:
+        branches: [main]
+    workflow_dispatch: 
+        inputs: 
+            terraform-destroy: 
+                description: 'Are you sure you want to run "terraform destroy?" This will delete all infrastructure and cannot be undone!'
+                required: true
+env:
+  AWS_REGION: eu-west-2  
+
+jobs:   
+  destroy:
+    runs-on: ubuntu-24.04
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v4    
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+    
+    - name: terraform destroy
+      uses: dflook/terraform-destroy@v2
+      with:
+        path: my-terraform-config
+        workspace: ${{ github.head_ref }}

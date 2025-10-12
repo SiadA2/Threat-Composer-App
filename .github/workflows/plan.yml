@@ -1,5 +1,15 @@
 name: Terraform Plan
-on: [push]
+
+on:
+  push: 
+    branches: [main]
+  workflow_dispatch: 
+    inputs:
+        terraform-plan:
+            description: 'Terraform apply?'
+            required: true
+            type: string
+
 
 env:
   AWS_REGION: eu-west-2  
@@ -26,4 +36,4 @@ jobs:
       - name: terraform plan
         uses: dflook/terraform-plan@v2
         with:
-          path: Terraform 
+          path: Terraform
