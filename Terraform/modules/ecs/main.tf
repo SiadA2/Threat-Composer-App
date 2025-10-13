@@ -34,13 +34,6 @@ resource "aws_ecs_task_definition" "app" {
       "mountPoints": [],
       "name": "tm-1",
       "portMappings": [
-        # {
-        #   "appProtocol": "http",
-        #   "containerPort": 80,
-        #   "hostPort": 80,
-        #   "name": "tm-1-80-tcp",
-        #   "protocol": "tcp"
-        # },
         {
           "appProtocol": "http",
           "containerPort": 3000,

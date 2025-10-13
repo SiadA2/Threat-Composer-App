@@ -7,10 +7,6 @@ resource "aws_acm_certificate" "application" {
   }
 }
 
-# data "aws_route53_zone" "application" {
-#   name         = "tm.nginxsiad.com"
-#   private_zone = false
-# }
 
 resource "aws_route53_record" "application" {
   for_each = {

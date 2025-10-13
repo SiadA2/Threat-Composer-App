@@ -7,6 +7,7 @@ module "alb" {
     vpc_id = module.vpc.vpc_id
     security_groups = module.security-grps.alb_security_group
     subnets = module.vpc.public_subnets
+    certificate_arn = module.acm.certificate_arn
 }
 
 module "security-grps"{
