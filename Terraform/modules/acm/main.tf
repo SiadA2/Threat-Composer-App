@@ -1,12 +1,16 @@
 resource "aws_acm_certificate" "application" {
   domain_name       = "tm.nginxsiad.com"
   validation_method = "DNS"
+
+   lifecycle {
+    create_before_destroy = true
+  }
 }
 
-data "aws_route53_zone" "application" {
-  name         = "tm.nginxsiad.com"
-  private_zone = false
-}
+# data "aws_route53_zone" "application" {
+#   name         = "tm.nginxsiad.com"
+#   private_zone = false
+# }
 
 resource "aws_route53_record" "application" {
   for_each = {
@@ -22,7 +26,7 @@ resource "aws_route53_record" "application" {
   records         = [each.value.record]
   ttl             = 60
   type            = each.value.type
-  zone_id         = data.aws_route53_zone.application.zone_id
+  zone_id         = var.hosted_zone_id
 }
 
 resource "aws_acm_certificate_validation" "example" {

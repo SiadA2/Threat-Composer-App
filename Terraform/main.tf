@@ -28,6 +28,7 @@ module "route53" {
     alb_zone_id = module.alb.alb_zone_id
 }
 
-# module "acm" {
-#     source = "./modules/acm"
-# }
+module "acm" {
+    source = "./modules/acm"
+    hosted_zone_id = module.route53.route53_hosted_zone
+}
