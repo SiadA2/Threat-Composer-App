@@ -50,7 +50,6 @@ jobs:
       run: |
         docker push 174350032095.dkr.ecr.eu-west-2.amazonaws.com/siada2/ecs:latest
       
-      if: success()
         
     
     
