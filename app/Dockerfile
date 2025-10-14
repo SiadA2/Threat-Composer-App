@@ -26,7 +26,7 @@
 
 # CMD ["serve", "-s", "build"]
 
-FROM node:20 AS build
+FROM node:20
 
 WORKDIR /app
 
@@ -43,3 +43,4 @@ RUN yarn global add serve
 EXPOSE 3000
 
 CMD ["serve", "-s", "build"]
+

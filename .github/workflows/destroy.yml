@@ -28,4 +28,3 @@ jobs:
       uses: dflook/terraform-destroy@v2
       with:
         path: Terraform
-        workspace: ${{ github.head_ref }}

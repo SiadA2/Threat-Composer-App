@@ -1,3 +1,8 @@
+variable "domain_name" {
+    type = string
+    default = "tm.nginxsiad.com"
+}
+
 variable "alb_dns_name"{
 }
 

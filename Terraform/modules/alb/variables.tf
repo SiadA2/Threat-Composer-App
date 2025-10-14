@@ -8,6 +8,10 @@ variable "app_port" {
 
 }
 
+variable "forward_action" {
+  type = string
+  default = "forward"
+}
 variable "vpc_id" {
 }
 

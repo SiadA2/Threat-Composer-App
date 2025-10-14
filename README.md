@@ -1,1 +1,1 @@
-# Threat-composer-app
+# Amazon Threat-Composer Application hosted on ECS

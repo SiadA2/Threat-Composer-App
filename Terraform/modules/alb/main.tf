@@ -50,6 +50,6 @@ resource "aws_alb_listener" "https" {
 
   default_action {
     target_group_arn = aws_alb_target_group.app.arn
-    type             = "forward"
+    type             = var.forward_action
   }
 }
