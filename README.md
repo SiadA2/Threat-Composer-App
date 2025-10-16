@@ -46,6 +46,13 @@ This is a deployment of the Amazon Threat-composer app, which is an open source 
 - Manual workflows to prevent any unwanted changes
 - Secrets & sensitive data stored in GitHub secrets to enforce principle of least privillege and prevent information being compromised
 
-
-
 ## Local App Setup
+
+```bash
+yarn install
+yarn build
+yarn global add serve
+serve -s build
+```
+
+then go to ```http://localhost:3000```
