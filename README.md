@@ -50,7 +50,7 @@ This is a deployment of the Amazon Threat-composer app, which is an open source 
 
 ```bash
 yarn install
-yarn build
+DISABLE_ESLINT_PLUGIN=true yarn build
 yarn global add serve
 serve -s build
 ```
