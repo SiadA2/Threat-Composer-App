@@ -16,6 +16,8 @@ This is a deployment of the Amazon Threat-composer app, which is an open source 
 
 ### Directory Structure
 
+```bash
+
 └── ./
     ├── .github
     │   └── workflows
@@ -55,7 +57,7 @@ This is a deployment of the Amazon Threat-composer app, which is an open source 
     │   ├── provider.tf
     │   └── terraform.tfvars
     └── README.md
-
+```
 
 ## Infrasructure
 
