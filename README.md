@@ -1,10 +1,10 @@
 # Amazon Threat-Composer Application deployed via ECS
 
+This is a deployment of the Amazon Threat-composer app, which is an open source threat modelling tool.
+
 <div align="center">
     <img src="./images/Screenshot 2025-10-13 175730.png" alt="Diagram" width="600"/>
 </div>
-
-This is a deployment of the Amazon Threat-composer app, which is an open source threat modelling tool.
 
 ## Overview
 
@@ -29,30 +29,12 @@ This is a deployment of the Amazon Threat-composer app, which is an open source 
     │   └── Dockerfile
     ├── Terraform
     │   ├── modules
-    │   │   ├── acm
-    │   │   │   ├── main.tf
-    │   │   │   ├── outputs.tf
-    │   │   │   └── variables.tf
-    │   │   ├── alb
-    │   │   │   ├── main.tf
-    │   │   │   ├── outputs.tf
-    │   │   │   └── variables.tf
-    │   │   ├── ecs
-    │   │   │   ├── main.tf
-    │   │   │   ├── outputs.tf
-    │   │   │   └── variables.tf
-    │   │   ├── route53
-    │   │   │   ├── main.tf
-    │   │   │   ├── outputs.tf
-    │   │   │   └── variables.tf
-    │   │   ├── security-grps
-    │   │   │   ├── main.tf
-    │   │   │   ├── outputs.tf
-    │   │   │   └── variables.tf
-    │   │   └── vpc
-    │   │       ├── main.tf
-    │   │       ├── outputs.tf
-    │   │       └── variables.tf
+    │   │   ├── acm/
+    │   │   ├── alb/
+    │   │   ├── ecs/
+    │   │   ├── route53/
+    │   │   ├── security-grps/
+    │   │   └── vpc/
     │   ├── main.tf
     │   ├── provider.tf
     │   └── terraform.tfvars
@@ -69,7 +51,7 @@ This is a deployment of the Amazon Threat-composer app, which is an open source 
 - Tasks run in private subnet w/ internet access through NAT Gateways to deny direct public access
 - Load Balancing and HTTPS redirection provided through an ALB
 - Security groups to restrict access to resources
-- Route 53 hosted zone and ACM configured to allow the app to be reached on https://tm.nginxsiad.com
+- Route 53 hosted zone and ACM configured to allow the app to be reached on ```https://tm.nginxsiad.com```
 
 ## Docker
 
