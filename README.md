@@ -22,17 +22,21 @@ This is a deployment of the Amazon Threat-composer app, which is an open source 
 
 ## Docker
 
-- Container runs as a non-root user to prevent any unauthorised access
+- Container runs as a non-root user to mitigate the impact of unauthorised access
 - ENTRYPOINT over CMD to prevent startup command being overidden by malware
-- Mutistage build & minimal base image to reduce image size and disk usage
 
 
 ## Terraform 
 
 - Modularised structutre for readability
-- Remote statefile stored ion Amazon S3 to allow collaboration
+- Remote statefile stored in Amazon S3 to allow collaboration
+- Pre-commit hooks to enforce syntax and best-practices
 
 ## CI/CD
+
+- Docker push and Terraform plan, apply and destroy all automated using GitHub actions
+- Manual workflows to prevent any unwanted changes
+- Secrets & sensitive data stored in GitHub secrets to enforce principle of least privillege and prevent information being compromised
 
 
 
