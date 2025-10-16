@@ -61,7 +61,7 @@ resource "aws_ecs_service" "main" {
     network_configuration {
         security_groups  = [var.ecs_security_group_id]
         subnets          = var.private_subnet_id
-        assign_public_ip = true
+        assign_public_ip = false
     }
 
     load_balancer {

@@ -8,10 +8,36 @@ variable "app_port" {
 
 }
 
+variable "protocol" {
+  type = string
+  default = "HTTP"
+}
+
+variable "http_port" {
+    type = number
+    default = 80
+}
+
+variable "target_group_name" {
+  type = string
+  default = "tm-target-group"
+}
+
 variable "forward_action" {
   type = string
   default = "forward"
 }
+
+variable "alb_name" {
+  type = string
+  default = "tm-load-balancer"
+}
+
+variable "target_type" {
+  type = string 
+  default = "ip"
+}
+
 variable "vpc_id" {
 }
 

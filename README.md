@@ -1,4 +1,4 @@
-# Amazon Threat-Composer Application deployed via ECS
+# Threat-Composer deployed on ECS Fargate
 
 This is a deployment of the Amazon Threat-composer app, which is an open source threat modelling tool.
 

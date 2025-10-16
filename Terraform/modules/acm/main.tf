@@ -1,5 +1,5 @@
 resource "aws_acm_certificate" "application" {
-  domain_name       = "tm.nginxsiad.com"
+  domain_name       = var.domain_name
   validation_method = "DNS"
 
    lifecycle {
