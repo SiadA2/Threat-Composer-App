@@ -1,13 +1,17 @@
 # Amazon Threat-Composer Application deployed via ECS
 
+<div align="center">
+    <img src="./images/Screenshot 2025-10-13 175730.png" alt="Diagram" width="600"/>
+</div>
+
 This is a deployment of the Amazon Threat-composer app, which is an open source threat modelling tool.
 
 ## Overview
 
 - Runs on HTTPS for end-to-end encryption
 - Deployed on ECS Fargate. 
-- Docker used to make the application lightweight & reusable. 
-- Terraform used to provision AWS infrastructure.
+- Docker to make the application lightweight & reusable. 
+- Terraform to provision AWS infrastructure.
 - CI/CD pipelines on GitHub Actions to automate the deployment of the app along with the infrastructure.
 
 ### App Structure
