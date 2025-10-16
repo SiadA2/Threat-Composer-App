@@ -14,6 +14,10 @@ This is a deployment of the Amazon Threat-composer app, which is an open source 
 
 ## Architecture
 
+<div align="center">
+    <img src="C:\Users\adami\.vscode\Threat-Composer-App\images\Screenshot 2025-10-13 175730.png" alt="CoderCo" width="300"/>
+</div>
+
 - Multi-AZ deployment for high availabilty.
 - Tasks run in private subnet w/ internet access through NAT Gateways to deny direct public access
 - Load Balancing and HTTPS redirection provided through an ALB
