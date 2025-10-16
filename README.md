@@ -15,7 +15,7 @@ This is a deployment of the Amazon Threat-composer app, which is an open source 
 ## Architecture
 
 <div align="center">
-    <img src="C:\Users\adami\.vscode\Threat-Composer-App\images\Screenshot 2025-10-13 175730.png" alt="CoderCo" width="300"/>
+    <img src="./images/Screenshot 2025-10-16 142838.png" alt="Diagram" width="300"/>
 </div>
 
 - Multi-AZ deployment for high availabilty.
