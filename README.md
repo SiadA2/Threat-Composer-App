@@ -37,7 +37,7 @@ This is a deployment of the Amazon Threat-composer app, which is an open source 
     │   │   └── vpc/
     │   ├── main.tf
     │   ├── provider.tf
-    │   └── terraform.tfvars
+    │   └── variables.tf
     └── README.md
 ```
 
@@ -47,9 +47,11 @@ This is a deployment of the Amazon Threat-composer app, which is an open source 
     <img src="./images/Screenshot 2025-10-17 103532.png" alt="Diagram" width="600"/>
 </div>
 
+### Key Features
+
 - Multi-AZ deployment for high availabilty.
-- Tasks run in private subnet w/ internet access through NAT Gateways to deny direct public access
 - Load Balancing and HTTPS redirection provided through an ALB
+- Tasks run in private subnet behind the alb to prevent direct internet access
 - Security groups to restrict access to resources
 - Route 53 hosted zone and ACM configured to allow the app to be reached on ```https://tm.nginxsiad.com```
 
@@ -63,7 +65,7 @@ This is a deployment of the Amazon Threat-composer app, which is an open source 
 
 - Modularised structutre for readability
 - Remote backend configured Amazon S3 to allow collaboration within large teams
-- Pre-commit hooks to enforce syntax and best-practices
+- Pre-commit hooks to check for and enforce correct syntax
 
 ## CI/CD
 
@@ -76,7 +78,7 @@ This is a deployment of the Amazon Threat-composer app, which is an open source 
 
 ```bash
 yarn install
-DISABLE_ESLINT_PLUGIN=true yarn build
+yarn build
 yarn global add serve
 serve -s build
 ```

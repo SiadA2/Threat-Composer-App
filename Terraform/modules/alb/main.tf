@@ -1,10 +1,11 @@
+# Create alb
 resource "aws_alb" "main" {
   name            = var.alb_name
   subnets         = var.subnets
   security_groups = [var.security_groups]
 }
 
-# Target group
+# Create target group
 resource "aws_alb_target_group" "app" {
   name        = var.target_group_name
   port        = var.http_port
@@ -23,7 +24,7 @@ resource "aws_alb_target_group" "app" {
   }
 }
 
-# Redirect all traffic from the ALB to the target group
+# Redirect all HTTP traffic to port 443 on the alb via HTTPS
 resource "aws_alb_listener" "front_end" {
   load_balancer_arn = aws_alb.main.arn
   port              = var.http_port
@@ -42,6 +43,7 @@ resource "aws_alb_listener" "front_end" {
 
 }
 
+# Forward HTTPS traffic to the target group
 resource "aws_alb_listener" "https" {
   load_balancer_arn = aws_alb.main.arn
   port              = var.https_port

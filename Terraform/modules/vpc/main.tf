@@ -1,10 +1,13 @@
+# Create VPC
 resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
 }
 
+# Pool of possible availability zones
 data "aws_availability_zones" "available" {
 }
 
+# Automatically create public & private subnets using the VPC CIDR block, no. of host bits and subnet number
 resource "aws_subnet" "private" {
     count             = var.az_count
     cidr_block        = cidrsubnet(aws_vpc.main.cidr_block, 8, count.index)
@@ -20,10 +23,12 @@ resource "aws_subnet" "public" {
     map_public_ip_on_launch = true
 }
 
+# Create an Internet gateway
 resource "aws_internet_gateway" "gw" {
     vpc_id = aws_vpc.main.id
 }
 
+# Configure a default route to the Internet gateway to allow internet access
 resource "aws_route" "internet_access" {
     route_table_id         = aws_vpc.main.main_route_table_id
     destination_cidr_block = "0.0.0.0/0"

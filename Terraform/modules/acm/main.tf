@@ -1,3 +1,4 @@
+# Create acm
 resource "aws_acm_certificate" "application" {
   domain_name       = var.domain_name
   validation_method = var.validation_method

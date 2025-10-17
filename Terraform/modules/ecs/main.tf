@@ -1,7 +1,9 @@
+# Create ECS cluster
 resource "aws_ecs_cluster" "main" {
   name = var.cluster_name
 }
 
+# AWS IAM role to allow execution of tasks
 data "aws_iam_role" "ecs_task_execution_role" {
   name = var.ecs_task_execution_role_name
 }
