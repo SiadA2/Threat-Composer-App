@@ -18,6 +18,11 @@ variable "http_port" {
     default = 80
 }
 
+variable "https_port" {
+    type = number
+    default = 443
+}
+
 variable "target_group_name" {
   type = string
   default = "tm-target-group"

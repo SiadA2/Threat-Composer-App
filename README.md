@@ -44,7 +44,7 @@ This is a deployment of the Amazon Threat-composer app, which is an open source 
 ## Infrasructure
 
 <div align="center">
-    <img src="./images/Screenshot 2025-10-16 142838.png" alt="Diagram" width="600"/>
+    <img src="./images/Screenshot 2025-10-17 103532.png" alt="Diagram" width="600"/>
 </div>
 
 - Multi-AZ deployment for high availabilty.

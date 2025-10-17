@@ -1,5 +1,5 @@
 resource "aws_ecs_cluster" "main" {
-    name = "cb-cluster"
+    name = var.cluster_name
 }
 
 data "aws_iam_role" "ecs_task_execution_role" {
@@ -8,7 +8,7 @@ data "aws_iam_role" "ecs_task_execution_role" {
 
 # Task definition
 resource "aws_ecs_task_definition" "app" {
-    family                   = "cb-app-task"
+    family                   = var.task_family
     execution_role_arn       = data.aws_iam_role.ecs_task_execution_role.arn
     network_mode             = "awsvpc"
     requires_compatibilities = ["FARGATE"]

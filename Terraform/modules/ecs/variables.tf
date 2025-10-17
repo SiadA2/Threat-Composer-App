@@ -19,9 +19,24 @@ variable "app_port" {
 
 }
 
+variable "network_mode" {
+    type = string
+    default = "awsvpc"
+}
+
+variable "cluster_name" {
+    type = string
+    default = "cb-cluster"
+}
+
 variable "ecs_task_execution_role_name" {
     description = "ECS task execution role name"
     default = "ecsTaskExecutionRole"
+}
+
+variable "task_family" {
+    type = string
+    default = "cb-app-task"
 }
 
 variable "alb_target_grp_arn" {
