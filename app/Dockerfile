@@ -4,7 +4,7 @@ FROM node:20-alpine
 # Specify directory in which subsequent commands will be run
 WORKDIR /app
 
-# Copy file containing dependencies into the /app directory
+# Copy package containing dependencies into the /app directory
 COPY package.json yarn.lock ./
 
 # Install dependencies
