@@ -1,8 +1,8 @@
 resource "aws_acm_certificate" "application" {
   domain_name       = var.domain_name
-  validation_method = "DNS"
+  validation_method = var.validation_method
 
-   lifecycle {
+  lifecycle {
     create_before_destroy = true
   }
 }
