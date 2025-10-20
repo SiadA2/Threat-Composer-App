@@ -51,7 +51,7 @@ This is a deployment of the Amazon Threat-composer app, which is an open source 
 
 - Multi-AZ deployment for high availabilty.
 - Load Balancing and HTTPS redirection provided through an ALB
-- Tasks run in private subnet behind the alb to prevent direct internet access
+- Tasks run behind the alb to prevent direct internet access
 - Security groups to restrict access to resources
 - Route 53 hosted zone and ACM configured to allow the app to be reached on ```https://tm.nginxsiad.com```
 
