@@ -42,8 +42,8 @@ variable "alb_target_grp_arn" {
 variable "ecs_security_group_id" {
 }
 
-variable "private_subnet_id" {
+variable "app_port" {
 }
 
-variable "app_port" {
+variable "public_subnets_id" {
 }

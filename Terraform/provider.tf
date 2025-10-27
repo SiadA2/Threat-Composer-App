@@ -7,9 +7,10 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "terraform-state-siad"
-    key    = "terraform.tfstate"
-    region = "eu-west-2"
+    bucket       = "terraform-state-siad"
+    key          = "terraform.tfstate"
+    region       = "eu-west-2"
+    use_lockfile = true
   }
 }
 

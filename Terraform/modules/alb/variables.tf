@@ -33,7 +33,7 @@ variable "vpc_id" {
 variable "security_groups" {
 }
 
-variable "subnets" {
+variable "public_subnets_id" {
 }
 
 variable "certificate_arn" {

@@ -3,14 +3,14 @@ module "vpc" {
 }
 
 module "alb" {
-  source          = "./modules/alb"
-  vpc_id          = module.vpc.vpc_id
-  security_groups = module.security-grps.alb_security_group
-  subnets         = module.vpc.public_subnets
-  certificate_arn = module.acm.certificate_arn
-  http_port       = var.http_port
-  https_port      = var.https_port
-  app_port        = var.app_port
+  source            = "./modules/alb"
+  vpc_id            = module.vpc.vpc_id
+  security_groups   = module.security-grps.alb_security_group
+  public_subnets_id = module.vpc.public_subnets_id
+  certificate_arn   = module.acm.certificate_arn
+  http_port         = var.http_port
+  https_port        = var.https_port
+  app_port          = var.app_port
 }
 
 module "security-grps" {
@@ -26,8 +26,8 @@ module "ecs" {
   source                = "./modules/ecs"
   alb_target_grp_arn    = module.alb.alb_target_grp
   ecs_security_group_id = module.security-grps.ecs_security_group
-  private_subnet_id     = module.vpc.private_subnets
   app_port              = var.app_port
+  public_subnets_id     = module.vpc.public_subnets_id
 }
 
 module "route53" {
