@@ -65,6 +65,8 @@ This is a deployment of the Amazon Threat-composer app, which is an open source 
 
 - Modularised structutre for readability
 - Remote backend configured Amazon S3 to allow collaboration within large teams
+- State-locking enabled to prevent state corruption from concurrent changes
+- Versioning configured for better DR, reducing RTOs
 - Pre-commit hooks to check for and enforce correct syntax
 
 ## CI/CD
@@ -82,5 +84,6 @@ yarn build
 yarn global add serve
 serve -s build
 ```
+
 
 then go to ```http://localhost:3000```
