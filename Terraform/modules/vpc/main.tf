@@ -7,13 +7,13 @@ resource "aws_vpc" "main" {
 data "aws_availability_zones" "available" {
 }
 
-# Automatically create subnets using the VPC CIDR block, no. of host bits and subnet number
+# Create a public subnet for each az
 resource "aws_subnet" "public" {
-  count                   = var.az_count
-  cidr_block              = cidrsubnet(aws_vpc.main.cidr_block, 8, count.index)
-  availability_zone       = data.aws_availability_zones.available.names[count.index]
-  vpc_id                  = aws_vpc.main.id
-  map_public_ip_on_launch = false
+    count                   = var.az_count
+    cidr_block              = cidrsubnet(aws_vpc.main.cidr_block, 8, count.index)
+    availability_zone       = data.aws_availability_zones.available.names[count.index]
+    vpc_id                  = aws_vpc.main.id
+    map_public_ip_on_launch = true
 }
 
 # Create an Internet gateway
@@ -27,4 +27,5 @@ resource "aws_route" "internet_access" {
   destination_cidr_block = "0.0.0.0/0"
   gateway_id             = aws_internet_gateway.gw.id
 }
+
 

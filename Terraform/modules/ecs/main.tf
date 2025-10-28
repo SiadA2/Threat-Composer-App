@@ -22,7 +22,7 @@ resource "aws_ecs_task_definition" "app" {
       "environment" : [],
       "environmentFiles" : [],
       "essential" : true,
-      "image" : "174350032095.dkr.ecr.eu-west-2.amazonaws.com/siada2/ecs@sha256:71313e1b4fa590b301397f35958f8ffa3dc4375c20c6e63f6c247cc7d55ac483",
+      "image" : "174350032095.dkr.ecr.eu-west-2.amazonaws.com/siada2/ecs@sha256:254383ec3ad8a457c977c4abcc4135cf9d6b5986249e436416401187e4c66ec9",
       "logConfiguration" : {
         "logDriver" : "awslogs",
         "options" : {
@@ -63,7 +63,7 @@ resource "aws_ecs_service" "main" {
   network_configuration {
     security_groups  = [var.ecs_security_group_id]
     subnets          = var.public_subnets_id
-    assign_public_ip = false
+    assign_public_ip = true
   }
 
   load_balancer {
